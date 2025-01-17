@@ -5,7 +5,8 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"dev": "node --watch app.js",
-		"db:seed": "node models/bdd/seeder.js"
+		"db:seed": "node models/bdd/seeder.js",
+		"db:fixtures": "node models/bdd/fixtures.js"
 	},
 	"type": "module",
 	"keywords": [],

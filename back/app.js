@@ -1,5 +1,5 @@
 import express from "express";
-// import { router } from "./routers/router.js";
+import { router } from "./routers/router.js";
 import cors from "cors";
 // import expressSanitizer from 'express-sanitizer';
 
@@ -15,7 +15,7 @@ app.use(cors());
 // sanitizer
 // app.use(expressSanitizer());
 
-// app.use(router);
+app.use(router);
 
 app.listen(PORT, () => {
 	console.log(`TrelloApp REST API is listening on http://localhost:${PORT}`);

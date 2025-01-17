@@ -1,11 +1,13 @@
-import User from "../user.js";
-import Board from "../board.js";
-import List from "../list.js";
-import Card from "../card.js";
-import Comment from "../comment.js";
-import Label from "../label.js";
-import Attachment from "../attachment.js";
-import sequelize from "./sequelize.js";
+import {
+	Attachment,
+	Board,
+	Card,
+	Comment,
+	Label,
+	List,
+	User,
+} from "../relations.js";
+import sequelize from "../bdd/sequelize.js";
 
 try {
 	await sequelize.sync({ force: true });

@@ -8,7 +8,7 @@ import Attachment from "./attachment.js";
 
 // Un utilisateur peut avoir plusieurs boards
 User.hasMany(Board, { foreignKey: "user_id", as: "boards" });
-Board.belongsTo(User, { foreignKey: "user_id", as: "user" });
+Board.belongsTo(User, { foreignKey: "user_id", as: "owner" });
 
 // Un board peut avoir plusieurs listes
 Board.hasMany(List, { foreignKey: "board_id", as: "lists" });
@@ -37,7 +37,7 @@ User.belongsToMany(Card, {
 });
 
 // Un commentaire appartient à un utilisateur
-Comment.belongsTo(User, { foreignKey: "user_id", as: "user" });
+Comment.belongsTo(User, { foreignKey: "user_id", as: "author" });
 User.hasMany(Comment, { foreignKey: "user_id", as: "comments" });
 
 // Une carte peut avoir plusieurs labels, et un label peut être attaché à plusieurs cartes (relation many-to-many)
@@ -72,3 +72,5 @@ Card.hasMany(Attachment, {
 //Un attachement est uploadé par un utilisateur
 Attachment.belongsTo(User, { foreignKey: "user_id", as: "user" });
 User.hasMany(Attachment, { foreignKey: "user_id", as: "attachments" });
+
+export { User, Board, List, Card, Comment, Label, Attachment };

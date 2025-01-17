@@ -1,12 +1,14 @@
 import { faker } from "@faker-js/faker";
 import sequelize from "./sequelize.js";
-import User from "../user.js";
-import Board from "../board.js";
-import List from "../list.js";
-import Card from "../card.js";
-import Label from "../label.js";
-import Comment from "../comment.js";
-import Attachment from "../attachment.js";
+import {
+	Attachment,
+	Board,
+	Card,
+	Comment,
+	Label,
+	List,
+	User,
+} from "../relations.js";
 import bcrypt from "bcrypt";
 
 (async () => {
