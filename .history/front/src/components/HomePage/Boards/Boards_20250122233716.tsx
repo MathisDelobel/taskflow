@@ -1,10 +1,9 @@
-export default function Cards() {
+export default function Boards() {
 	return (
 		<div className="column is-half">
-			<h2 className="title is-4 has-text-white">Mes tâches assignées</h2>
 			<div className="card">
-				<header className="card-header has-background-success">
-					<p className="card-header-title has-text-white">Tâches en cours</p>
+				<header className="card-header has-background-info">
+					<h2 className="card-header-title is-4 has-text-white">Mes boards</h2>
 				</header>
 				<div className="card-content">
 					<ul>

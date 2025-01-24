@@ -45,13 +45,13 @@ import bcrypt from "bcrypt";
 		await User.bulkCreate(users);
 		console.log("Users table populated");
 
-		// Create Boards
+		// Create BoardsTable
 		const boards = Array.from({ length: 5 }).map(() => ({
 			title: faker.lorem.words(3),
 			user_id: faker.number.int({ min: 1, max: users.length }), // Ensure valid userId
 		}));
 		await Board.bulkCreate(boards);
-		console.log("Boards table populated");
+		console.log("BoardsTable table populated");
 
 		// Create Lists
 		const lists = Array.from({ length: 15 }).map(() => ({

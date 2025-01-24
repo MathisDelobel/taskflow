@@ -5,6 +5,11 @@ const boardApi = {
 		const response = await api.get("/boards");
 		return response.data;
 	},
+
+	getOneBoard: async (id) => {
+		const response = await api.get(`/boards/${id}`);
+		return response.data;
+	}
 };
 
 export default boardApi;

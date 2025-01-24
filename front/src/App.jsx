@@ -1,16 +1,19 @@
 import 'bulma/css/bulma.min.css';
 import Navbar from './components/Navbar/Navbar.jsx';
 import Footer from './components/Footer/Footer.jsx';
-import Header from './components/Header/Header.jsx';
-import LoginForm from './components/LoginForm/LoginForm.jsx';
-import SignupForm from './components/SignupForm/SignupForm.jsx';
-import Cards from './components/Dashboard/Boards/Boards.jsx';
+import Home from './pages/Home/Home.jsx';
+import LoginForm from './pages/Login/LoginForm.jsx';
+import SignupForm from './pages/Signup/SignupForm.jsx';
+import Cards from './components/Boards/BoardsTable.jsx';
 import './assets/App.css';
 import { Route, Routes } from 'react-router';
 import { useState } from 'react';
 import storage from './services/storage/storage.js';
 import { setAuthenticationHeaders } from './services/api/api.js';
 import { ToastContainer } from 'react-toastify';
+import AuthGuard from './components/AuthGuard.jsx';
+import boards from './components/Boards/BoardsTable.jsx';
+import BoardPage from './pages/Board/BoardPage.jsx';
 
 function App() {
   // State variable : logged?
@@ -26,8 +29,6 @@ function App() {
     setAuthenticationHeaders(token);
   }
 
-  console.log(isLogged);
-
   return (
     <>
       <Navbar isLogged={isLogged} />
@@ -35,14 +36,16 @@ function App() {
         <div className="hero-body">
           <Routes>
             {/* HomePage */}
-            <Route path="/" element={<Header />} />
+            <Route path="/" element={<Home />} />
             <Route
               path="/se-connecter"
               element={<LoginForm setIsLogged={setIsLogged} />}
             />
             <Route path="/inscription" element={<SignupForm />} />
-
-            <Route path="/dashboard" element={<Cards />} />
+            <Route element={<AuthGuard />}>
+              <Route path="/dashboard" element={<Cards />} />
+              <Route path="/boards/:id" element={<BoardPage />} />
+            </Route>
           </Routes>
         </div>
       </div>

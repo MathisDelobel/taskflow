@@ -14,7 +14,6 @@ export const boardController = {
 		if (!boards) {
 			res.status(404).json({ error: "No board found" });
 		}
-
 		res.status(200).json(boards);
 	},
 
@@ -25,14 +24,29 @@ export const boardController = {
 	 * @returns {Board} 200 - A board object
 	 */
 	getOneBoard: async (req, res) => {
-		const id = req.params.id;
+		const id = parseInt(req.params.id);
 		const board = await Board.findByPk(id, {
-			include: ["lists", "owner", "labels"],
+			include: [
+				{
+					association: "lists",
+					include: [
+						{
+							association: "cards",
+							include: [
+								"labels", // inclure les labels des cartes
+								"attachments", // inclure les attachments des cartes
+								"comments",
+							],
+						},
+					],
+				},
+				"owner",
+				"labels",
+			],
 		});
 		if (!board) {
 			res.status(404).json({ error: "No board found" });
 		}
-
 		res.status(200).json(board);
 	},
 };
