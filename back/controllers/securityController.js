@@ -54,5 +54,21 @@ export const securityController = {
         const token = securityService.generateToken({id: user.id});
         res.status(201).json({token});
 
+    },
+
+    getCurrentUser: async (req, res) => {
+        const token = req.headers.authorization?.split(" ")[1];
+
+        if (!token) {
+            return res.status(200).json({ isAuthenticated: false, user: null });
+        }
+
+        const decoded = securityService.verifyToken(token);
+        if (!decoded) {
+            return res.status(200).json({ isAuthenticated: false, user: null });
+        }
+
+        const user = await User.findByPk(decoded.userId, { attributes: { exclude: "password" } });
+        res.json({ isAuthenticated: true, user });
     }
 }

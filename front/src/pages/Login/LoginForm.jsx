@@ -9,8 +9,7 @@ function LoginForm({ setIsLogged }) {
 
   async function handleSubmit(formData) {
     const userData = Object.fromEntries(formData.entries());
-    try {
-      const token = await userApi.login(userData);
+    userApi.login(userData).then((token) => {
       if (token) {
         toast('Vous êtes à présent connecté', { type: 'success' });
 
@@ -25,7 +24,7 @@ function LoginForm({ setIsLogged }) {
 
         navigate('/dashboard');
       }
-    } catch (error) {}
+    });
   }
   return (
     <div className="container has-text-centered">

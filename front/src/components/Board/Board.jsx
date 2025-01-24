@@ -1,5 +1,4 @@
 import List from '../List/List';
-import { toast } from 'react-toastify';
 
 export default function Board({ board }) {
   if (!board.lists) {

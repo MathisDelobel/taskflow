@@ -22,7 +22,9 @@ export default function BoardPage() {
 
   return (
     <div className="container">
-      <h1 className="title has-text-centered mt-5">{board.title}</h1>
+      <h1 className="title has-text-centered mt-5 has-text-white">
+        {board.title}
+      </h1>
 
       <div className="columns mt-5">
         <Board board={board} />

@@ -6,6 +6,11 @@ const userApi = {
 		return response.data;
 	},
 
+	getCurrentUser: async () => {
+		const response = await api.get("/users/me");
+		return response.data;
+	},
+
 	login: async (user) => {
 		const response = await api.post("/login", user);
 		return response.data;
