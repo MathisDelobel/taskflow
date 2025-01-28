@@ -12,7 +12,7 @@ export const cardController = {
 			include: ["list", "comments", "attachments", "labels", "assignedUsers"],
 		});
 		if (!cards) {
-			res.status(404).json({ error: "No card found" });
+			res.status(404).json({ message:"Aucune carte trouvée"});
 		}
 
 		res.status(200).json(cards);
@@ -24,7 +24,7 @@ export const cardController = {
 			include: ["list", "comments", "attachments", "labels", "assignedUsers"],
 		});
 		if (!card) {
-			res.status(404).json({ error: "No card found" });
+			res.status(404).json({ message:"Aucune carte trouvée"});
 		}
 
 		res.status(200).json(card);

@@ -13,8 +13,8 @@ api.interceptors.response.use(
 	(error) => {
 		if (error.response) {
 			// Gérer les erreurs avec une réponse du serveur
-			if (error.response.status === 401) {
-				toast.error("Identifiants incorrects.");
+			if (error.response.data.message) {
+				toast.error(`${error.response.data.message}`);
 			} else {
 				toast.error(
 					"Une erreur s'est produite sur le serveur. Veuillez réessayer plus tard.",

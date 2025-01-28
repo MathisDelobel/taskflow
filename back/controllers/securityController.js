@@ -1,6 +1,7 @@
 import User from "../models/user.js";
 import * as securityService from "../utils/security.js";
 import Joi from "joi";
+import sanitizeHtml from "sanitize-html";
 
 export const securityController = {
 	login: async (req, res) => {
@@ -23,7 +24,7 @@ export const securityController = {
 			!user ||
 			!(await securityService.comparePassword(password, user.password))
 		) {
-			return res.status(401).json({ error: "Identifiants incorrects" });
+			return res.status(401).json({ message: "Identifiants incorrects" });
 		}
 
 		const token = securityService.generateToken({ id: user.id });
@@ -36,6 +37,7 @@ export const securityController = {
 			username: Joi.string().required(),
 			email: Joi.string().email(),
 			password: Joi.string().required(),
+			confirmPassword: Joi.string().required().valid(Joi.ref("password")),
 		});
 
 		const { error } = schema.validate(req.body);
@@ -43,18 +45,24 @@ export const securityController = {
 			return res.status(400).json(error.details[0].message);
 		}
 
-		const { username, password } = req.body;
+		const { username, password, confirmPassword } = req.body;
 
-		const existingUser = await User.findOne({ where: { username } });
+		if (password !== confirmPassword) {
+			return res.status(400).json({message:"Les mots de passe ne correspondent pas."});
+		}
+		const sanitizedUsername = sanitizeHtml(username);
+
+		const existingUser = await User.findOne({ where: { username:sanitizedUsername } });
+
 		if (existingUser) {
-			return res.status(409).json("Ce nom d'utilisateur est deja pris");
+			return res.status(409).json({message: "Ce nom d'utilisateur est déja pris"});
 		}
 		const user = await User.create({
-			username,
+			username:sanitizedUsername,
 			password: await securityService.hashPassword(password),
 		});
 		const token = securityService.generateToken({ id: user.id });
-		res.status(201).json({ token });
+		res.status(201).json({ isAuthenticated:true, token });
 	},
 
 	getCurrentUser: async (req, res) => {

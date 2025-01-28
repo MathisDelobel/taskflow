@@ -12,7 +12,7 @@ export const boardController = {
 			include: ["lists", "owner", "labels"],
 		});
 		if (!boards) {
-			res.status(404).json({ error: "No board found" });
+			res.status(404).json({ message:"Aucun board trouvé" });
 		}
 		res.status(200).json(boards);
 	},
@@ -45,7 +45,7 @@ export const boardController = {
 			],
 		});
 		if (!board) {
-			res.status(404).json({ error: "No board found" });
+			res.status(404).json({ message:"Aucun board trouvé" });
 		}
 		res.status(200).json(board);
 	},

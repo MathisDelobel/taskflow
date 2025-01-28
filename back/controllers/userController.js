@@ -12,7 +12,7 @@ export const userController = {
 			include: ["boards", "comments", "attachments", "assignedCards"],
 		});
 		if (!users) {
-			res.status(404).json({ error: "No user found" });
+			res.status(404).json({ message: "Aucun utilisateur trouvé" });
 		}
 
 		res.status(200).json(users);
@@ -30,9 +30,10 @@ export const userController = {
 			include: ["boards", "comments", "attachments", "assignedCards"],
 		});
 		if (!user) {
-			res.status(404).json({ error: "No user found" });
+			res.status(404).json({ message: "Aucun utilisateur trouvé" });
 		}
 
 		res.status(200).json(user);
 	},
+
 };

@@ -1,6 +1,7 @@
 import { api } from "./api.js";
 
 const userApi = {
+
 	getUsers: async () => {
 		const response = await api.get("/users");
 		return response.data;
@@ -15,6 +16,11 @@ const userApi = {
 		const response = await api.post("/login", user);
 		return response.data;
 	},
+
+	signup: async (user) => {
+		const response = await api.post("/signup", user);
+		return response.data;
+	}
 };
 
 export default userApi;

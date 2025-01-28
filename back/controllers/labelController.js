@@ -12,7 +12,7 @@ export const labelController = {
 			include: ["board", "cards"],
 		});
 		if (!labels) {
-			res.status(404).json({ error: "No Label found" });
+			res.status(404).json({message: "Aucun label trouvé" });
 		}
 
 		res.status(200).json(labels);
@@ -30,7 +30,7 @@ export const labelController = {
 			include: ["board", "cards"],
 		});
 		if (!label) {
-			res.status(404).json({ error: "No Label found" });
+			res.status(404).json({message: "Aucun label trouvé" });
 		}
 
 		res.status(200).json(label);
