@@ -10,4 +10,4 @@ router.post("/login", cw(securityController.login));
 
 router.post("/signup", cw(securityController.signup));
 
-router.get("/auth/me",cw(securityController.getCurrentUser));
+router.post("/auth/me",cw(securityController.getCurrentUser));

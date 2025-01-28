@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
+import board from '../../services/api/board.js';
 
-function BoardsTable() {
+function BoardsTable({ userBoards }) {
   return (
     <div className="columns is-centered">
       <div className="column is-half">
@@ -10,17 +11,13 @@ function BoardsTable() {
           </header>
           <div className="card-content">
             <ul>
-              {/* Liste des boards cliquables */}
-              <li className="mb-2">
-                <Link to="/board/1" className="has-text-info">
-                  - Projet Alpha
-                </Link>
-              </li>
-              <li className="mb-2">
-                <Link to="/board/2" className="has-text-info">
-                  - Projet Beta
-                </Link>
-              </li>
+              {userBoards.map((board) => (
+                <li key={board.id} className="mb-2">
+                  <Link to={`/boards/${board.id}`} className="has-text-info">
+                    - {board.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           <footer className="card-footer">

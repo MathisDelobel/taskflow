@@ -1,37 +1,25 @@
 import BoardsTable from '../../components/Boards/BoardsTable.jsx';
-import userApi from '../../services/api/user.js';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
-import storage from '../../services/storage/storage.js';
+import { useEffect } from 'react';
+import { useUserContext } from '../../contexts/UserContext.jsx';
 
 function Dashboard() {
-  const [user, setUser] = useState([]);
-  const navigate = useNavigate();
+  const { userData } = useUserContext();
 
-  useEffect(() => {
-    function getCurrentUser() {
-      userApi
-        .getCurrentUser()
-        .then((user) => {
-          if (user.isAuthenticated) {
-            setUser(user);
-          }
-        })
-        .catch((err) => {
-          setUser(null);
-          storage.removeItem('token');
-          navigate('/');
-        });
-    }
-  }, []);
+  if (!userData)
+    return (
+      <div className="has-text-centered">
+        <button className="button is-loading is-large is-primary">
+          Loading...
+        </button>
+      </div>
+    );
 
   return (
     <div className="container">
       <h1 className="title has-text-centered has-text-white">
         Bienvenue sur TaskFlow
       </h1>
-
-      <BoardsTable />
+      <BoardsTable userBoards={userData.user.boards} />
     </div>
   );
 }

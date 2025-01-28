@@ -69,9 +69,10 @@ export const securityController = {
 			return res.status(200).json({ isAuthenticated: false, user: null });
 		}
 
-		const user = await User.findByPk(decoded.userId, {
+		const user = await User.findByPk(decoded.id, {
 			attributes: { exclude: "password" },
+			include: ["boards"]
 		});
-		res.json({ isAuthenticated: true, user });
+		res.json({isAuthenticated: true, user });
 	},
 };
