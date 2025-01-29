@@ -18,9 +18,6 @@ function LoginForm() {
         storage.setAuthToken(response.token);
         setAuthenticationHeaders(response.token);
 
-        // Rafraîchit les données utilisateur
-        fetchUserData();
-
         setIsLogged(true);
         navigate('/dashboard');
       }

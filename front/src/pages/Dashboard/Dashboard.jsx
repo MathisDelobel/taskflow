@@ -1,9 +1,14 @@
 import BoardsTable from '../../components/Boards/BoardsTable.jsx';
-import { useEffect } from 'react';
 import { useUserContext } from '../../contexts/UserContext.jsx';
+import { useEffect } from 'react';
 
-function Dashboard() {
-  const { userData } = useUserContext();
+function DashboardPage() {
+  const { userData, fetchUserData } = useUserContext();
+
+  //On fetch les données du user actuel
+  useEffect(() => {
+    fetchUserData();
+  }, []);
 
   if (!userData)
     return (
@@ -24,4 +29,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default DashboardPage;

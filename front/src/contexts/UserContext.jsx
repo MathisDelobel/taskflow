@@ -24,6 +24,10 @@ export function UserProvider({ children }) {
         setUserData(null);
         setIsLogged(false);
       }
+    } else {
+      // Si aucun token, on considère l'utilisateur comme déconnecté
+      setUserData(null);
+      setIsLogged(false);
     }
     setIsLoading(false);
   }

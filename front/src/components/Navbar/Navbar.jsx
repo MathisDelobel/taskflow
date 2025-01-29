@@ -33,7 +33,7 @@ function Navbar() {
       aria-label="main navigation"
     >
       <div className="navbar-brand">
-        <NavLink className="navbar-item" to="/">
+        <NavLink className="navbar-item" to={isLogged ? '/dashboard' : '/'}>
           <h1 className="title is-4 has-text-primary">TaskFlow</h1>
         </NavLink>
 
@@ -60,22 +60,26 @@ function Navbar() {
       <div id="navbarMenu" className={`navbar-menu${isOpen ? 'active' : ''}`}>
         <div className="navbar-end">
           {isLogged ? (
-            <button
-              type="button"
-              className="navbar-item has-text-grey-dark"
-              onClick={handleLogout}
-            >
-              Déconnexion
-            </button>
+            <>
+              <button
+                type="button"
+                className="navbar-item has-text-grey-dark"
+                onClick={handleLogout}
+              >
+                Déconnexion
+              </button>
+
+              <NavLink
+                to="/dashboard"
+                className={({ isActive }) =>
+                  `navbar-item has-text-grey-dark ${isActive ? 'has-text-primary' : ''}`
+                }
+              >
+                Dashboard
+              </NavLink>
+            </>
           ) : null}
-          <NavLink
-            className={({ isActive }) =>
-              `navbar-item has-text-grey-dark ${isActive ? 'has-text-primary' : ''}`
-            }
-            to="/inscription"
-          >
-            Signup
-          </NavLink>
+
           <NavLink
             className={({ isActive }) =>
               `navbar-item has-text-grey-dark ${isActive ? 'has-text-primary' : ''}`

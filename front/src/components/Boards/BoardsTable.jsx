@@ -1,5 +1,4 @@
 import { Link } from 'react-router';
-import board from '../../services/api/board.js';
 
 function BoardsTable({ userBoards }) {
   return (
