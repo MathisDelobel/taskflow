@@ -3,6 +3,12 @@ export default function Card({ card }) {
     <div key={card.id} className="card mb-3">
       <header className="card-header">
         <p className="card-header-title">{card.title}</p>
+        <button className="card-header-icon">
+          <span className="icon">
+            <i className="fas fa-edit"></i>{' '}
+            {/* Replace with your desired icon */}
+          </span>
+        </button>
       </header>
 
       <div className="card-content">

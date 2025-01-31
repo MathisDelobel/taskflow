@@ -1,0 +1,48 @@
+services:
+  db:
+    image: postgres
+    container_name: taskflow-database
+    env_file:
+      - docker-db.env  # Fichier contenant les variables d'environnement
+    volumes:
+      - pg-taskflow:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "taskflow"]
+      interval: 5s
+      retries: 5
+
+  db-init:
+    image: node:lts
+    container_name: db-init
+    depends_on:
+      db:
+        condition: service_healthy
+    working_dir: /app
+    command: ["sh", "-c", "npm install && sleep 10 && node models/bdd/seeder.js && node models/bdd/fixtures.js"]
+
+  back:
+    build:
+      context: ./back
+      dockerfile: DockerfileBack
+    ports:
+      - "3001:3001"
+    depends_on:
+      db:
+        condition: service_healthy
+    container_name: taskflow-back
+    
+
+  front:
+    build:
+      context: ./front
+      dockerfile: DockerfileFront
+    ports:
+      - "4173:4173"
+    depends_on:
+      - back
+    container_name: taskflow-front
+
+volumes:
+  pg-taskflow:

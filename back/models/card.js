@@ -17,7 +17,6 @@ Card.init(
 		},
 		order_index: {
 			type: DataTypes.INTEGER,
-			allowNull: false,
 		},
 		list_id: {
 			type: DataTypes.INTEGER,

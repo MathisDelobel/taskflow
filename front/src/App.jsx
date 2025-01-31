@@ -1,4 +1,5 @@
 import 'bulma/css/bulma.min.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import Navbar from './components/Navbar/Navbar.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import Home from './pages/Home/Home.jsx';

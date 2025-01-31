@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import userApi from '../../services/api/user.js';
 import storage from '../../services/storage/storage.js';
@@ -99,6 +99,14 @@ function SignupForm() {
               </div>
             </div>
           </form>
+          <div className="has-text-centered mt-4">
+            <p className="has-text-white">
+              Déja inscrit ?{' '}
+              <Link className="has-text-white" to="/se-connecter">
+                Se connecter
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>

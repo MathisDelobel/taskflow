@@ -13,6 +13,7 @@ export default function List({ list }) {
         {list.cards.map((card) => (
           <Card key={card.id} card={card} />
         ))}
+        <button className="button is-primary">Ajouter une carte</button>
       </div>
     </div>
   );
