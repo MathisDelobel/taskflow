@@ -15,3 +15,8 @@ router.get("/boards", cw(boardController.getBoards));
  * @returns {Board} 200 - A board object
  */
 router.get("/boards/:id", cw(boardController.getOneBoard));
+
+/**
+ * @route POST /boards
+ */
+router.post("/boards", cw(boardController.createBoard));

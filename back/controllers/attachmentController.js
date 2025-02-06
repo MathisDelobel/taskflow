@@ -12,7 +12,7 @@ export const attachmentController = {
 			include: ["user", "card"],
 		});
 		if (!attachments) {
-			res.status(404).json({ error: "No attachment found" });
+			res.status(404).json({ message: "Aucune image trouvée" });
 		}
 
 		res.status(200).json(attachments);
@@ -30,7 +30,7 @@ export const attachmentController = {
 			include: ["user", "card"],
 		});
 		if (!attachment) {
-			res.status(404).json({ error: "No attachment found" });
+			res.status(404).json({ message: "Aucune image trouvée" });
 		}
 
 		res.status(200).json(attachment);

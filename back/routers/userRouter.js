@@ -15,3 +15,4 @@ router.get("/users", cw(userController.getUsers));
  * @returns {User} 200 - A user object
  */
 router.get("/users/:id", cw(userController.getOneUser));
+

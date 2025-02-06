@@ -1,10 +1,11 @@
 {
-	"name": "trello",
+	"name": "taskflow",
 	"version": "1.0.0",
 	"main": "app.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"dev": "node --watch app.js",
+		"start": "node app.js",
 		"db:seed": "node models/bdd/seeder.js",
 		"db:fixtures": "node models/bdd/fixtures.js"
 	},
@@ -18,7 +19,10 @@
 		"cors": "^2.8.5",
 		"dotenv": "^16.4.7",
 		"express": "^4.21.2",
+		"joi": "^17.13.3",
+		"jsonwebtoken": "^9.0.2",
 		"pg": "^8.13.1",
+		"sanitize-html": "^2.14.0",
 		"sequelize": "^6.37.5"
 	},
 	"devDependencies": {

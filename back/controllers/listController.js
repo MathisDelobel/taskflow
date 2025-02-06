@@ -12,7 +12,7 @@ export const listController = {
 			include: ["cards", "board"],
 		});
 		if (!lists) {
-			res.status(404).json({ error: "No list found" });
+			res.status(404).json({ message: "Aucune liste trouvée" });
 		}
 
 		res.status(200).json(lists);
@@ -30,7 +30,7 @@ export const listController = {
 			include: ["cards", "board"],
 		});
 		if (!list) {
-			res.status(404).json({ error: "No list found" });
+			res.status(404).json({ message: "Aucune liste trouvée" });
 		}
 
 		res.status(200).json(list);

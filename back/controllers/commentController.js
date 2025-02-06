@@ -12,7 +12,7 @@ export const commentController = {
 			include: ["author", "card"],
 		});
 		if (!comments) {
-			res.status(404).json({ error: "No Comment found" });
+			res.status(404).json({ message:"Aucun commentaire trouvé" });
 		}
 
 		res.status(200).json(comments);
@@ -30,7 +30,7 @@ export const commentController = {
 			include: ["author", "card"],
 		});
 		if (!comment) {
-			res.status(404).json({ error: "No Comment found" });
+			res.status(404).json({ message:"Aucun commentaire trouvé" });
 		}
 
 		res.status(200).json(comment);

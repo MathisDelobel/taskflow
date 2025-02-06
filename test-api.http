@@ -1,0 +1,63 @@
+### récupération des users
+GET http://localhost:3000/users HTTP/1.1
+
+### recuperation d'un user
+GET http://localhost:3000/users/1 HTTP/1.1
+
+
+
+### Recuperation des boards
+GET http://localhost:3000/boards HTTP/1.1
+
+### Recuperation d'une BoardPage
+GET http://localhost:3000/boards/1 HTTP/1.1
+
+
+
+
+### Recuperation des attachment                                                  
+GET http://localhost:3000/attachments
+
+### Recuperation d'un attachment
+GET http://localhost:3000/attachments/1
+
+
+
+### Recuperation des comments
+GET http://localhost:3000/comments
+
+### Recuperation d'un comment
+GET http://localhost:3000/comments/1
+
+
+
+
+### Recuperation des labels
+GET http://localhost:3000/labels
+
+### Recuperation d'un label
+GET http://localhost:3000/labels/1
+
+
+
+### Recuperation des cards
+GET http://localhost:3000/cards
+
+### Recuperation d'une card
+GET http://localhost:3000/cards/1
+
+
+
+
+### Recuperation des listes
+GET http://localhost:3000/lists
+
+### Recuperation d'une liste
+GET http://localhost:3000/lists/1
+
+
+
+
+
+
+
