@@ -7,7 +7,7 @@ services:
     volumes:
       - pg-taskflow:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5431:5431"
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "taskflow"]
       interval: 5s

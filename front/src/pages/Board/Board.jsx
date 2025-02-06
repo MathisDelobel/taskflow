@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 import Board from "../../components/Board/Board.jsx";
 
 export default function BoardPage() {
-	const [board, setBoard] = useState([]);
+	const [board, setBoard] = useState(null);
 	const { id } = useParams();
 
 	useEffect(() => {
@@ -12,6 +12,22 @@ export default function BoardPage() {
 			setBoard(board);
 		});
 	}, []);
+
+	// Fonction pour ajouter une carte à une liste dans le state
+	const addCardToList = (listId, newCard) => {
+		setBoard(prevBoard => ({
+			...prevBoard,
+			lists: prevBoard.lists.map(list => {
+				if (list.id === listId) {
+					return {
+						...list,
+						cards: [...list.cards, newCard]
+					};
+				}
+				return list;
+			})
+		}));
+	};
 
 	if (!board)
 		return (
@@ -29,7 +45,7 @@ export default function BoardPage() {
 				Ajouter une liste
 			</button>
 			<div className="columns mt-5">
-				<Board board={board} />
+				<Board board={board} onAddCard={addCardToList} />
 			</div>
 		</div>
 	);

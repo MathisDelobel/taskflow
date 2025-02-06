@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import storage from '../services/storage/storage.js'; // Par exemple pour récupérer le token
 import userApi from '../services/api/user.js';
+import boardApi from '../services/api/board.js';
 
 const userContext = createContext();
 
@@ -8,6 +9,7 @@ export function UserProvider({ children }) {
   const [userData, setUserData] = useState(null); // Stocke les infos utilisateur
   const [isLoading, setIsLoading] = useState(true); // Indique si on charge encore les infos
   const [isLogged, setIsLogged] = useState(!!storage.getAuthToken()); //Verifie si un user est connecté
+
 
   // Fonction pour récupérer et mettre à jour les données utilisateur
   async function fetchUserData() {

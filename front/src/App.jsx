@@ -21,6 +21,7 @@ function App() {
   if (token) {
     // si on a un token, on l'ajoute aux entêtes Axios
     setAuthenticationHeaders(token);
+
   }
 
   return (

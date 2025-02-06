@@ -15,3 +15,9 @@ router.get("/cards", cw(cardController.getCards));
  * @returns {Card} 200 - A card object
  */
 router.get("/cards/:id", cw(cardController.getOneCard));
+
+
+/**
+ * @route POST /cards
+ */
+router.post("/cards", cw(cardController.createCard));

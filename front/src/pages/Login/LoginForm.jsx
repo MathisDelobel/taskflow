@@ -7,7 +7,7 @@ import { useUserContext } from '../../contexts/UserContext.jsx';
 
 function LoginForm() {
   const navigate = useNavigate();
-  const { setIsLogged, fetchUserData } = useUserContext();
+  const { setIsLogged } = useUserContext();
 
   async function handleSubmit(formData) {
     const userData = Object.fromEntries(formData.entries());

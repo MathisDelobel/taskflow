@@ -1,4 +1,5 @@
 import { Card } from "../models/relations.js";
+import Joi from "joi";
 
 export const cardController = {
 	/**
@@ -29,4 +30,22 @@ export const cardController = {
 
 		res.status(200).json(card);
 	},
+
+	createCard: async (req, res) => {
+		const schema = Joi.object({
+			title: Joi.string().min(3).required(),
+			description: Joi.string().min(3),
+			due_date: Joi.date(),
+			order_index: Joi.number(),
+			list_id: Joi.number().required(),
+		})
+		const { error } = schema.validate(req.body);
+		if (error) {
+			return res.status(400).json(error.details[0].message);
+		}
+
+		const card = await Card.create(req.body);
+
+		res.status(201).json({message: "Création de la carte réussie", card});
+	}
 };
