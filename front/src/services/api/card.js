@@ -14,6 +14,11 @@ const cardApi = {
     createCard: async (card) => {
         const response = await api.post("/cards", card);
         return response.data;
+    },
+
+    updateCard: async (id, card) => {
+        const response = await api.patch(`/cards/${id}`, card);
+        return response.data;
     }
 };
 

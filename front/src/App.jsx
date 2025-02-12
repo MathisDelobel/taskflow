@@ -34,11 +34,13 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/se-connecter" element={<LoginForm />} />
             <Route path="/inscription" element={<SignupForm />} />
+
             <Route element={<AuthGuard />}>
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/boards/:id" element={<BoardPage />} />
               <Route path="/nouveau-board" element={<CreateBoardPage />} />
             </Route>
+
           </Routes>
         </div>
       </div>

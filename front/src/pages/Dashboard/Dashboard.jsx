@@ -1,5 +1,5 @@
 import BoardsTable from "../../components/Boards/BoardsTable.jsx";
-import { useUserContext } from "../../contexts/UserContext.jsx";
+import { useUserContext } from "../../contexts/UserContext/UserContext.jsx";
 import { useEffect } from "react";
 
 function DashboardPage() {

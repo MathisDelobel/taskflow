@@ -1,7 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
-import storage from '../services/storage/storage.js'; // Par exemple pour récupérer le token
-import userApi from '../services/api/user.js';
-import boardApi from '../services/api/board.js';
+import storage from '../../services/storage/storage.js';
+import userApi from '../../services/api/user.js';
 
 const userContext = createContext();
 
