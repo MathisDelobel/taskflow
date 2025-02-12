@@ -21,3 +21,6 @@ router.get("/cards/:id", cw(cardController.getOneCard));
  * @route POST /cards
  */
 router.post("/cards", cw(cardController.createCard));
+
+
+router.patch("/cards/:id", cw(cardController.updateCard));

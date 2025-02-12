@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { NavLink, useNavigate, useLocation } from "react-router";
 import storage from "../../services/storage/storage.js";
 import { toast } from "react-toastify";
-import { useUserContext } from "../../contexts/UserContext.jsx";
+import { useUserContext } from "../../contexts/UserContext/UserContext.jsx";
 
 function Navbar() {
 	const [isOpen, setIsOpen] = useState(false);

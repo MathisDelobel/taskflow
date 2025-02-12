@@ -3,7 +3,7 @@ import userApi from '../../services/api/user.js';
 import { setAuthenticationHeaders } from '../../services/api/api.js';
 import { toast } from 'react-toastify';
 import storage from '../../services/storage/storage.js';
-import { useUserContext } from '../../contexts/UserContext.jsx';
+import { useUserContext } from '../../contexts/UserContext/UserContext.jsx';
 
 function LoginForm() {
   const navigate = useNavigate();

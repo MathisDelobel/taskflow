@@ -1,4 +1,9 @@
-export default function Card({ card }) {
+import {useState} from "react";
+import CardModal from "../Modals/CardModal/CardModal.jsx";
+
+export default function Card({ card}) {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     // Vérifier si card est défini
     if (!card) return <div className="title">Loading...</div>;
 
@@ -7,13 +12,13 @@ export default function Card({ card }) {
     const comments = card.comments || []; // Si card.comments est undefined, utiliser un tableau vide
 
     return (
+        <>
         <div key={card.id} className="card mb-3">
             <header className="card-header">
                 <p className="card-header-title">{card.title}</p>
                 <button className="card-header-icon">
-                    <span className="icon">
+                    <span className="icon" onClick={() => setIsModalOpen(true)}>
                         <i className="fas fa-edit"></i>{' '}
-                        {/* Replace with your desired icon */}
                     </span>
                 </button>
             </header>
@@ -48,5 +53,14 @@ export default function Card({ card }) {
                 </div>
             </div>
         </div>
+
+
+            <CardModal isOpen={isModalOpen}
+                       setIsModalOpen={setIsModalOpen}
+                       card={card}
+            />
+            
+
+     </>
     );
 }

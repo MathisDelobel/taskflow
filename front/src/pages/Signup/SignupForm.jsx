@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import userApi from '../../services/api/user.js';
 import storage from '../../services/storage/storage.js';
 import { setAuthenticationHeaders } from '../../services/api/api.js';
-import { useUserContext } from '../../contexts/UserContext.jsx';
+import { useUserContext } from '../../contexts/UserContext/UserContext.jsx';
 
 function SignupForm() {
   const navigate = useNavigate();
