@@ -1,10 +1,12 @@
 import React, {useState} from "react";
-import EditableTitleUpdate from "../../EditableTitle/Update/EditableTitleUpdate.jsx";
+import EditableTitleUpdate from "../../EditableTitle/Update/EditableTitleUpdate.jsx"
+import EditableDescription from "./CardDescription/CardDescription.jsx";
 
 export default function CardModal({ setIsModalOpen, isOpen, card }) {
     if (!isOpen) return null;
 
     const [isEditing, setIsEditing] = useState(false);
+    const[isAddingDescription, setIsAddingDescription] = useState(false);
 
     return (
         <div className="modal is-active">
@@ -25,7 +27,16 @@ export default function CardModal({ setIsModalOpen, isOpen, card }) {
                 </header>
                 <section className="modal-card-body">
                     <div className="box">
-                        <p className="subtitle is-6">{card.description}</p>
+                        {isAddingDescription ?
+                            <EditableDescription setIsAddingDescription={setIsAddingDescription} card={card} />
+                            :
+                            card.description ?
+                                <p onClick={()=>{setIsAddingDescription(true)}}>{card.description}</p>
+                                :
+                                <button className="button is-primary mb-5" type="button" onClick={() => { setIsAddingDescription(true) }}>
+                                    Ajouter une description
+                                </button>
+                        }
 
                         {card.labels?.length > 0 && (
                             <div className="tags">
