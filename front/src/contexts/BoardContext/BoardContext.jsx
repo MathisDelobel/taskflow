@@ -23,8 +23,6 @@ export const BoardProvider = ({ children, boardId }) => {
     };
 
 
-
-
     // Ajouter une carte à une liste
     const addCardToList = (listId, newCard) => {
         setBoard(prevBoard => ({
