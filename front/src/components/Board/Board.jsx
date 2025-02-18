@@ -14,7 +14,7 @@ export default function Board() {
 
   return (
     <>
-      <div className="container">
+      <div className="container is-overflow-x-scroll is-clipped">
         <h1 className="title has-text-centered mt-5 has-text-white">
           {board ? board.title : "Chargement..."} {/* Afficher le titre du board */}
         </h1>
