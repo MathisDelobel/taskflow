@@ -13,7 +13,7 @@ export default function CardModal({ setIsModalOpen, isOpen, card }) {
             <div className="modal-background" onClick={()=>{setIsModalOpen(false)}}></div>
             <div className="modal-card">
                 <header className="modal-card-head">
-                    <button className="delete mr-3" aria-label="close" onClick={()=>{setIsModalOpen(false)}}></button>
+                    <button className="delete mr-3" aria-label="close" onClick={()=>{setIsModalOpen(false)}}/>
                     {isEditing ?
                         (<EditableTitleUpdate
                             card={card}

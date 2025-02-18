@@ -3,7 +3,7 @@ import {useBoardContext} from "../../../../contexts/BoardContext/BoardContext.js
 import cardApi from "../../../../services/api/card.js";
 
 export default function EditableDescription({ setIsAddingDescription, card }) {
-    const [description, setDescription] = useState(card.description);
+    const [description, setDescription] = useState(card.description || "");
     const inputRef = useRef(null);
     const{updateCardModal}= useBoardContext();
 

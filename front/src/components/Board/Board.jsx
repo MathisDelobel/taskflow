@@ -11,9 +11,10 @@ export default function Board() {
 
   return (
     <>
-      {board.lists.map((list) => (
-        <List key={list.id} list={list}/>
-      ))}
+      {board.lists && board.lists.length > 0 && (
+            board.lists.map((list) => <List key={list.id} list={list} />)
+        )}
+
     </>
   );
 }

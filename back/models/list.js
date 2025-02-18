@@ -11,11 +11,9 @@ List.init(
 		},
 		order_index: {
 			type: DataTypes.INTEGER,
-			allowNull: false,
 		},
 		due_date: {
 			type: DataTypes.DATE,
-			allowNull: true,
 		},
 		board_id: {
 			type: DataTypes.INTEGER,
