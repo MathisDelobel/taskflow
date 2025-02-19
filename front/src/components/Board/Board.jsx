@@ -14,7 +14,7 @@ export default function Board() {
 
   return (
     <>
-      <div className="container is-overflow-x-scroll is-clipped">
+      <div className="container">
         <h1 className="title has-text-centered mt-5 has-text-white">
           {board ? board.title : "Chargement..."} {/* Afficher le titre du board */}
         </h1>
@@ -22,7 +22,7 @@ export default function Board() {
         <button onClick={()=>{setIsModalOpen(true)}} type="button" className="button is-primary">
           Ajouter une liste
         </button>
-        <div className="columns mt-5">
+        <div className="columns mt-5 is-overflow-x-scroll is-clipped">
           {board.lists && board.lists.length > 0 && (
               board.lists.map((list) => <List key={list.id} list={list} />)
           )}
