@@ -1,4 +1,4 @@
-import {api} from "./api.js";
+import { api } from "./api.js";
 
 const boardApi = {
 	getBoards: async () => {
@@ -14,7 +14,12 @@ const boardApi = {
 	createBoard: async (board) => {
 		const response = await api.post("/boards", board);
 		return response.data;
-	}
+	},
+
+	updateBoard: async (id, board) => {
+		const response = await api.patch(`/boards/${id}`, board);
+		return response.data;
+	},
 };
 
 export default boardApi;
