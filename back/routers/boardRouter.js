@@ -20,3 +20,8 @@ router.get("/boards/:id", cw(boardController.getOneBoard));
  * @route POST /boards
  */
 router.post("/boards", cw(boardController.createBoard));
+
+/**
+ * @route PATCH /boards/:id
+ */
+router.patch("/boards/:id", cw(boardController.updateBoard));
