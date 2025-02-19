@@ -54,7 +54,6 @@ export default function Card({ card}) {
             </div>
         </div>
 
-
             <CardModal isOpen={isModalOpen}
                        setIsModalOpen={setIsModalOpen}
                        card={card}

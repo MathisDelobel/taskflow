@@ -15,3 +15,6 @@ router.get("/lists", cw(listController.getLists));
  * @returns {List} 200 - A list object
  */
 router.get("/lists/:id", cw(listController.getOneList));
+
+
+router.post("/lists", cw(listController.createList));

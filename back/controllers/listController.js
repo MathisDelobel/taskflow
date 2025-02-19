@@ -1,4 +1,6 @@
-import { List } from "../models/relations.js";
+import {List} from "../models/relations.js";
+import Joi from "joi";
+import sanitizeHtml from "sanitize-html";
 
 export const listController = {
 	/**
@@ -35,4 +37,25 @@ export const listController = {
 
 		res.status(200).json(list);
 	},
+
+
+	createList: async (req, res) => {
+		const schema = Joi.object({
+			title: Joi.string().required(),
+			board_id: Joi.number().required(),
+		});
+
+		const { error } = schema.validate(req.body);
+		if (error) {
+			return res.status(400).json(error.details[0].message);
+		}
+
+		const { title, board_id } = req.body;
+		const sanitizedTitle = sanitizeHtml(title);
+
+		const list = await List.create({title:sanitizedTitle, board_id});
+
+		res.status(201).json(list);
+
+	}
 };

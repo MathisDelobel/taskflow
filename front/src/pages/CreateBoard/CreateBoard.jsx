@@ -7,7 +7,7 @@ export default function CreateBoardPage() {
   async function handleSubmit(formData) {
     const boardData = Object.fromEntries(formData.entries());
     boardApi.createBoard(boardData).then((response) => {
-      navigate(`/boards/${response}`);
+      navigate(`/boards/${response.id}`);
     });
   }
 

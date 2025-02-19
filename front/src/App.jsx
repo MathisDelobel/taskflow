@@ -15,6 +15,7 @@ import BoardPage from './pages/Board/Board.jsx';
 import DashboardPage from './pages/Dashboard/Dashboard.jsx';
 import CreateBoardPage from './pages/CreateBoard/CreateBoard.jsx';
 
+
 function App() {
   const token = storage.getAuthToken();
 

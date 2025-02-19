@@ -80,7 +80,7 @@ export const boardController = {
 
 		const board = await Board.create({title:sanitizedTitle, user_id:userId});
 
-		res.status(201).json(board.id);
+		res.status(201).json(board);
 
 	}
 };

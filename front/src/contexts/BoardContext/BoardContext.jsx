@@ -11,15 +11,30 @@ export const BoardProvider = ({ children, boardId }) => {
         boardApi.getOneBoard(boardId).then(setBoard);
     }, [boardId]);
 
+    const addListToBoard = (newList) => {
+        setBoard(prevBoard => {
+            if (!prevBoard) return { lists: [newList] }; // Cas où `prevBoard` est `null`
+
+            return {
+                ...prevBoard,
+                lists: prevBoard.lists ? [...prevBoard.lists, newList] : [newList] // Vérifie toujours lists
+            };
+        });
+    };
+
+
     // Ajouter une carte à une liste
     const addCardToList = (listId, newCard) => {
         setBoard(prevBoard => ({
             ...prevBoard,
             lists: prevBoard.lists.map(list =>
-                list.id === listId ? { ...list, cards: [...list.cards, newCard] } : list
+                list.id === listId
+                    ? { ...list, cards: list.cards ? [...list.cards, newCard] : [newCard] } // Vérification et initialisation
+                    : list
             ),
         }));
     };
+
 
     // Mettre à jour une carte
     const updateCardModal = (listId, cardId, updatedFields) => {
@@ -39,7 +54,7 @@ export const BoardProvider = ({ children, boardId }) => {
     };
 
     return (
-        <BoardContext.Provider value={{ board, addCardToList, updateCardModal }}>
+        <BoardContext.Provider value={{ board, addCardToList, updateCardModal, addListToBoard }}>
             {children}
         </BoardContext.Provider>
     );

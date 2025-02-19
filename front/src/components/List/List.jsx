@@ -5,15 +5,18 @@ import { useState } from "react";
 
 export default function List({ list }) {
 
+    if (!list) return <div className="title">Loading...</div>;
+
     const [isAdding, setIsAdding] = useState(false);
 
     return (
         <div key={list.id} className="column is-one-third">
             <div className="box">
                 <h2 className="title is-4 has-text-primary">{list.title}</h2>
-                {list.cards.map((card) => (
-                    <Card key={card.id} card={card} />
-                ))}
+                {/* Vérifie que list.cards est défini avant d'utiliser .map() */}
+                {list.cards?.length > 0 && (
+                    list.cards.map((card) => <Card key={card.id} card={card} />)
+                )}
 
                 {!isAdding ? (
                     <button className="button is-primary" onClick={()=>{setIsAdding(true)}}>

@@ -1,9 +1,9 @@
 export default function Footer() {
 	return (
 		<footer>
-			<div className="content has-text-centered">
+			<div className="content has-text-centered p-5">
 				<p>
-					<strong>KanbanApp</strong> by <a href="/">Your Name</a>. Organize your
+					<strong>Taskflow</strong> by <a href="https://github.com/MathisDelobel">Mathis</a>. Organize your
 					tasks efficiently.
 				</p>
 			</div>
