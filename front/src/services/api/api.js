@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 // Configurer une instance Axios
 export const api = axios.create({
-	baseURL: "https://bxd74jgp-3000.uks1.devtunnels.ms",
+	baseURL: "http://localhost:3000",
 	timeout: 5000,
 });
 
