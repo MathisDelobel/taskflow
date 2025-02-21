@@ -18,3 +18,6 @@ router.get("/lists/:id", cw(listController.getOneList));
 
 
 router.post("/lists", cw(listController.createList));
+
+
+router.patch("/lists/:id", cw(listController.updateList));
