@@ -1,4 +1,4 @@
-import {List} from "../models/relations.js";
+import {Card, List} from "../models/relations.js";
 import Joi from "joi";
 import sanitizeHtml from "sanitize-html";
 
@@ -57,5 +57,33 @@ export const listController = {
 
 		res.status(201).json(list);
 
+	},
+
+	updateList: async (req, res) => {
+
+		const schema = Joi.object({
+			title: Joi.string().required(),
+			board_id: Joi.number().required(),
+			order_index: Joi.number(),
+			due_date: Joi.date(),
+		});
+
+		// Validation des champs modifiés
+		const { error } = schema.validate(req.body);
+		if (error) {
+			return res.status(400).json({ message: error.details[0].message });
+		}
+
+		const id = Number.parseInt(req.params.id);
+
+		const list = await List.findByPk(id);
+		if (!list) {
+			res.status(404).json({message:"Liste non trouvée"})
+		}
+
+		Object.assign(list, req.body);
+		await list.save();
+
+		res.status(200).json(list);
 	}
 };

@@ -1,32 +1,31 @@
 import { useState, useRef, useEffect } from 'react';
-import { useBoardContext } from '../../../contexts/BoardContext/BoardContext';
-import boardApi from '../../../services/api/board';
+import listApi from '../../../services/api/list.js';
+import { useBoardContext } from '../../../contexts/BoardContext/BoardContext.jsx';
 
-export default function EditableTitleUpdateBoard({ setIsEditing }) {
-  const { board } = useBoardContext();
-  const [boardTitle, setBoardTitle] = useState(board.title);
+export default function EditableTitleUpdateList({ setIsEditing, list }) {
+  const [listTitle, setListTitle] = useState(list.title);
   const inputRef = useRef(null);
-  const { updateBoard } = useBoardContext();
+  const { updateList } = useBoardContext();
 
   useEffect(() => {
     inputRef.current.focus();
   }, []);
 
   const handleUpdateTitle = () => {
-    // Mettre à jour le board via l'API
-    boardApi
-      .updateBoard(board.id, { title: boardTitle, user_id: board.user_id })
+    // Mettre à jour le list via l'API
+    listApi
+      .updateList(list.id, { title: listTitle, board_id: list.board_id })
       .then((response) => {
         if (response.id) {
           // Mettre à jour le contexte avec le titre modifié
-          updateBoard({ title: boardTitle });
+          updateList(list.id, { title: listTitle });
         }
       });
   };
 
   const handleBlurOrEnter = (e) => {
     if (e.type === 'blur' || e.key === 'Enter') {
-      if (boardTitle.trim() !== board.title) {
+      if (listTitle.trim() !== list.title) {
         handleUpdateTitle();
       } else {
         setIsEditing(false);
@@ -40,11 +39,11 @@ export default function EditableTitleUpdateBoard({ setIsEditing }) {
       ref={inputRef}
       type="text"
       className="input"
-      value={boardTitle}
-      onChange={(e) => setBoardTitle(e.target.value)}
+      value={listTitle}
+      onChange={(e) => setListTitle(e.target.value)}
       onBlur={handleBlurOrEnter}
       onKeyDown={handleBlurOrEnter}
-      aria-label="Nom du board"
+      aria-label="Nom du list"
     />
   );
 }
