@@ -14,7 +14,7 @@ Techno utilisées :
 ### **Cloner le dépôt et installer les dépendances**
 
 ```bash
-git clone https://github.com/MathisDelobel/taskflow
+git clone git@github.com:MathisDelobel/taskflow.git
 cd back
 npm i
 cd ../front
@@ -46,6 +46,7 @@ cd back
 npm run dev
 cd ../front
 npm run dev
+```
 
 
 
