@@ -1,6 +1,6 @@
-# Installation de l'application Kanban
+# Installation de l'application 
 
-Bienvenue dans l'application taskflow de type kanban en cours de développement ! Ce guide vous aidera à installer et configurer l'environnement de développement sur votre machine locale.
+Bienvenue dans l'application taskflow de type kanban en cours de développement. 
 
 ## Prérequis :
 
